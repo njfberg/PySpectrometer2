@@ -54,7 +54,6 @@ group.add_argument(
     "--snapshot-interval",
     help="Take a snapshot of the spectrum every x seconds",
     action="store_true",
-    default=0,
 )
 args = parser.parse_args()
 dispFullscreen = False
@@ -65,10 +64,10 @@ if args.fullscreen:
 if args.waterfall:
     print("Waterfall display enabled")
     dispWaterfall = True
-if args.snapshot_interval != 0:
+if args.snapshot_interval:
     print("Snapshot mode enabled")
     makeSnapshot = True
-    snapshot_interval = args.snapshot_interval
+    snapshot_interval = 10
     last_snapshot_time = time.time()
 
 
