@@ -675,24 +675,24 @@ while True:
         picam2.set_controls({"AnalogueGain": picamGain})
         print("Camera Gain: " + str(picamGain))
 
-	current_time = time.time()
-	if makeSnapshot == True:
-		if current_time - last_snapshot_time >= snapshot_interval:
+    current_time = time.time()
+    if makeSnapshot == True:
+        if current_time - last_snapshot_time >= snapshot_interval:
             last_snapshot_time = current_time  # Update the last snapshot time
-		# package up the data!
-			graphdata = []
-			graphdata.append(wavelengthData)
-			graphdata.append(intensity)
-			if dispWaterfall == True:
-				savedata = []
-				savedata.append(spectrum_vertical)
-				savedata.append(graphdata)
-				savedata.append(waterfall_vertical)
-			else:
-				savedata = []
-				savedata.append(spectrum_vertical)
-				savedata.append(graphdata)
-			saveMsg = snapshot(savedata)
+            # package up the data!
+            graphdata = []
+            graphdata.append(wavelengthData)
+            graphdata.append(intensity)
+            if dispWaterfall == True:
+                savedata = []
+                savedata.append(spectrum_vertical)
+                savedata.append(graphdata)
+                savedata.append(waterfall_vertical)
+            else:
+                savedata = []
+                savedata.append(spectrum_vertical)
+                savedata.append(graphdata)
+            saveMsg = snapshot(savedata)
 
 # Everything done
 cv2.destroyAllWindows()
